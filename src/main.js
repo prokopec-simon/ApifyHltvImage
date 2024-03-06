@@ -39,7 +39,7 @@ const processInput = async ({ imgId, urlTrail }) => {
 
             await Actor.pushData({
                 status: 200,
-                data: [{ img: imageData }],
+                data: [{ img: imageData, fileName: imgId }],
             });
         },
     });
