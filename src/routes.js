@@ -5,7 +5,9 @@ export const router = createPuppeteerRouter();
 router.addDefaultHandler(async ({ enqueueLinks, log }) => {
     log.info(`enqueueing new URLs`);
     await enqueueLinks({
-        globs: ["https://apify.com/*"],
+        globs: [
+            "https://img-cdn.hltv.org/teamlogo/bEgST6XoNV4ZdenRKzCQyl.svg?ixlib=java-2.1.0&s=bd9b10a8dfe7b3640103745687389e3c",
+        ],
         label: "detail",
     });
 });
