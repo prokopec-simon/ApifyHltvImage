@@ -14,7 +14,7 @@ const proxyConfiguration = await Actor.createProxyConfiguration({
 const crawler = new PuppeteerCrawler({
     proxyConfiguration,
     async requestHandler({ page }) {
-        const status = await page.content;
+        const status = await page.url;
         console.log(`Proxy Status: ${status}`);
     },
 });
