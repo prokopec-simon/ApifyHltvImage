@@ -1,21 +1,23 @@
-import { Dataset, createPuppeteerRouter } from 'crawlee';
+import { Dataset, createPuppeteerRouter } from "crawlee";
 
 export const router = createPuppeteerRouter();
 
 router.addDefaultHandler(async ({ enqueueLinks, log }) => {
     log.info(`enqueueing new URLs`);
     await enqueueLinks({
-        globs: ['https://apify.com/*'],
-        label: 'detail',
+        globs: ["https://apify.com/*"],
+        label: "detail",
     });
 });
 
-router.addHandler('detail', async ({ request, page, log }) => {
+router.addHandler("detail", async ({ request, page, log }) => {
     const title = await page.title();
+    const content = await page.content();
     log.info(`${title}`, { url: request.loadedUrl });
 
     await Dataset.pushData({
         url: request.loadedUrl,
+        content,
         title,
     });
 });
