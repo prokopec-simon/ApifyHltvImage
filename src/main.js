@@ -25,7 +25,10 @@ const crawler = new PuppeteerCrawler({
 
         // Convert the SVG content to Base64
         const base64Image = Buffer.from(svgContent).toString("base64");
-
+        await Actor.pushData({
+            status: 200,
+            data: [{ img: base64Image }],
+        });
         // Output the Base64 representation of the image
         console.log(`Base64 Image: ${base64Image}`);
     },
