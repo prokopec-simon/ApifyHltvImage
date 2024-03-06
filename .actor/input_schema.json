@@ -1,0 +1,14 @@
+{
+    "title": "Cheerio Crawler input",
+    "type": "object",
+    "schemaVersion": 1,
+    "properties": {
+        "imgUrl": {
+            "title": "imgUrl",
+            "type": "string",
+            "description": "imgUrl",
+            "editor": "textfield"
+        },
+    },
+    "required": ["imgUrl"]
+}

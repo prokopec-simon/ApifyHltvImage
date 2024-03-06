@@ -1,0 +1,12 @@
+{
+    "actorSpecification": 1,
+    "name": "HLTV image",
+    "title": "Cheerio scraper for HLTV image as Base64",
+    "description": "A simple crawler that returns a base64 version of image",
+    "version": "0.1",
+    "meta": {
+        "templateId": "ts-crawlee-cheerio"
+    },
+    "input": "./input_schema.json",
+    "dockerfile": "./Dockerfile"
+}
