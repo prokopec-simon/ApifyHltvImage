@@ -7,7 +7,7 @@
             "title": "Data",
             "type": "array",
             "description": "An array of objects containing imgId and urlTrail",
-            "editor": "textfield",
+            "editor": "json",
             "items": {
                 "type": "object",
                 "properties": {
