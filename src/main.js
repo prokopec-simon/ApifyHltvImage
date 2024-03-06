@@ -1,83 +1,28 @@
-// Apify SDK - toolkit for building Apify Actors (Read more at https://docs.apify.com/sdk/js/).
 import { Actor } from "apify";
-// Web scraping and browser automation library (Read more at https://crawlee.dev)
 import { PuppeteerCrawler } from "crawlee";
-// this is ESM project, and as such, it requires you to specify extensions in your relative imports
-// read more about this here: https://nodejs.org/docs/latest-v18.x/api/esm.html#mandatory-file-extensions
-import { router } from "./routes.js";
 
-// The init() call configures the Actor for its environment. It's recommended to start every Actor with an init().
 await Actor.init();
 
-// Define the URLs to start the crawler with - get them from the input of the Actor or use a default list.
 const input = await Actor.getInput();
 const startUrls = input?.startUrls;
 
-// Create a proxy configuration that will rotate proxies from Apify Proxy.
 const proxyConfiguration = await Actor.createProxyConfiguration({
     groups: ["RESIDENTIAL"],
     countryCode: "CZ",
 });
-// Create a PuppeteerCrawler that will use the proxy configuration and and handle requests with the router from routes.js file.
+
 const crawler = new PuppeteerCrawler({
     proxyConfiguration,
-    requestHandler: router,
+    async requestHandler({ page }) {
+        const status = await page.content;
+        console.log(`Proxy Status: ${status}`);
+    },
 });
 
-// Run the crawler with the start URLs and wait for it to finish.
+console.log("Running Puppeteer script...");
+
 await crawler.run(startUrls);
 
-// Gracefully exit the Actor process. It's recommended to quit all Actors with an exit().
+console.log("Puppeteer closed.");
+
 await Actor.exit();
-
-// import axios from 'axios';
-
-// import { Actor } from 'apify';
-
-// await Actor.init();
-
-// const input = await Actor.getInput();
-// const { url } = input;
-
-// const response = await axios
-//     .get(url)
-//     .then((response) =>
-//         Buffer.from(response.data, 'binary').toString('base64')
-//     );
-
-// await Actor.pushData(response);
-
-// await Actor.exit();
-
-// const input: Dictionary | null = await Actor.getInput();
-// if (input === null) {
-//     throw new Error('Input is not defined.');
-// }
-// const { imgUrl, urlTrail } = input;
-
-// const proxyConfiguration = await Actor.createProxyConfiguration({
-//     groups: ['RESIDENTIAL'],
-//     countryCode: 'CZ',
-// });
-
-// const fullUrl = `https://img-cdn.hltv.org/teamlogo/${imgUrl}${urlTrail}}`;
-
-// const crawler = new CheerioCrawler({
-//     maxRequestRetries: 10,
-//     proxyConfiguration,
-//     async requestHandler({ $ }) {
-//         const pageContent = $.html();
-//         await Actor.pushData({
-//             status: 200,
-//             data: [
-//                 {
-//                     pageContent: pageContent,
-//                     matchUrl: fullUrl,
-//                 },
-//             ],
-//         });
-//     },
-// });
-
-// await crawler.run([fullUrl]);
-// await Actor.exit();
