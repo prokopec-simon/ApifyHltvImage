@@ -14,7 +14,7 @@ const proxyConfiguration = await Actor.createProxyConfiguration({
     countryCode: 'CZ',
 });
 
-const fullUrl = `https://img-cdn.hltv.org/teamlogo/${imgUrl}`;
+const fullUrl = `https://img-cdn.hltv.org/teamlogo/${imgUrl}?invert=true&ixlib=java-2.1.0&sat=-100&w=100&s=df35dcf50e4bb9d73a80b5d65bd1bba9`;
 
 const crawler = new CheerioCrawler({
     maxRequestRetries: 10,
