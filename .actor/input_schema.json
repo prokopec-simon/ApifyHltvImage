@@ -8,7 +8,7 @@
             "type": "string",
             "description": "imgUrl",
             "editor": "textfield"
-        },
+        }
     },
     "required": ["imgUrl"]
 }
