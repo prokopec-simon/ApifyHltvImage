@@ -16,16 +16,28 @@ const fullUrl = `https://img-cdn.hltv.org/teamlogo/${imgId}${urlTrail}`;
 const crawler = new PuppeteerCrawler({
     proxyConfiguration,
     async requestHandler({ page }) {
-        const svgContent = await page.evaluate(() => {
-            const svgElement = document.querySelector('svg');
-            return svgElement.outerHTML;
-        });
+        const isPng = fullUrl.includes('.png');
 
-        const base64Image = Buffer.from(svgContent).toString('base64');
+        let imageData;
+        if (isPng) {
+            const [response] = await Promise.all([
+                page.waitForResponse((pageResponse) => pageResponse.url().includes('.png')),
+                page.goto(fullUrl),
+            ]);
+            const buffer = await response.buffer();
+            imageData = Buffer.from(buffer).toString('base64');
+        } else {
+            const svgContent = await page.evaluate(() => {
+                const svgElement = document.querySelector('svg');
+                return svgElement.outerHTML;
+            });
+
+            imageData = Buffer.from(svgContent).toString('base64');
+        }
 
         await Actor.pushData({
             status: 200,
-            data: [{ img: base64Image }],
+            data: [{ img: imageData }],
         });
     },
 });
