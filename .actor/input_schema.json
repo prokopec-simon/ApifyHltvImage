@@ -3,18 +3,29 @@
     "type": "object",
     "schemaVersion": 1,
     "properties": {
-        "imgId": {
-            "title": "imgId",
-            "type": "string",
-            "description": "imgId",
-            "editor": "textfield"
-        },
-        "urlTrail": {
-            "title": "urlTrail",
-            "type": "string",
-            "description": "url trail",
-            "editor": "textfield"
+        "data": {
+            "title": "data",
+            "type": "array",
+            "description": "An array of objects containing imgId and urlTrail",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "imgId": {
+                        "title": "imgId",
+                        "type": "string",
+                        "description": "imgId",
+                        "editor": "textfield"
+                    },
+                    "urlTrail": {
+                        "title": "urlTrail",
+                        "type": "string",
+                        "description": "url trail",
+                        "editor": "textfield"
+                    }
+                },
+                "required": ["imgId"]
+            }
         }
     },
-    "required": ["imgId"]
+    "required": ["data"]
 }
