@@ -4,7 +4,7 @@
     "schemaVersion": 1,
     "properties": {
         "data": {
-            "title": "data",
+            "title": "Data",
             "type": "array",
             "description": "An array of objects containing imgId and urlTrail",
             "items": {
@@ -24,8 +24,7 @@
                     }
                 },
                 "required": ["imgId"]
-            },
-            "enum": []
+            }
         }
     },
     "required": ["data"]
