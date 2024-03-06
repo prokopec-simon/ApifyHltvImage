@@ -2,7 +2,7 @@ import { Dataset, createPuppeteerRouter } from "crawlee";
 
 export const router = createPuppeteerRouter();
 
-router.addHandler("detail", async ({ request, page, log }) => {
+router.addHandler(async ({ request, page, log }) => {
     log.info(await page.title());
 
     const title = await page.title();
