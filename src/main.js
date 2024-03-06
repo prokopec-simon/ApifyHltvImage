@@ -11,7 +11,7 @@ const proxyConfiguration = await Actor.createProxyConfiguration({
 });
 
 const { urlTrail, imgId } = input;
-const fullUrl = `https://www.hltv.org/matches/${imgId}/${urlTrail}`;
+const fullUrl = `https://img-cdn.hltv.org/teamlogo/${imgId}${urlTrail}`;
 
 const crawler = new PuppeteerCrawler({
     proxyConfiguration,
