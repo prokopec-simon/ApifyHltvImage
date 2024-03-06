@@ -14,8 +14,20 @@ const proxyConfiguration = await Actor.createProxyConfiguration({
 const crawler = new PuppeteerCrawler({
     proxyConfiguration,
     async requestHandler({ page }) {
-        const status = await page.url;
-        console.log(`Proxy Status: ${status}`);
+        //the start url looks like this:https://img-cdn.hltv.org/teamlogo/bEgST6XoNV4ZdenRKzCQyl.svg?ixlib=java-2.1.0&s=bd9b10a8dfe7b3640103745687389e3c
+        // ineed to get the image and save it as Base64
+
+        // Extract the SVG content
+        const svgContent = await page.evaluate(() => {
+            const svgElement = document.querySelector("svg");
+            return svgElement.outerHTML;
+        });
+
+        // Convert the SVG content to Base64
+        const base64Image = Buffer.from(svgContent).toString("base64");
+
+        // Output the Base64 representation of the image
+        console.log(`Base64 Image: ${base64Image}`);
     },
 });
 
