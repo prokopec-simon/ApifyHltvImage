@@ -1,11 +1,11 @@
 {
 	"actorSpecification": 1,
-	"name": "NodeHltvImage",
-	"title": "Scrape single page in JavaScript",
-	"description": "Scrape data from single page with provided URL.",
+	"name": "HltvImage",
+	"title": "Project Puppeteer Crawler JavaScript",
+	"description": "Crawlee and Puppeteer project in JavaScript.",
 	"version": "0.0",
 	"meta": {
-		"templateId": "js-start"
+		"templateId": "js-crawlee-puppeteer-chrome"
 	},
 	"input": "./input_schema.json",
 	"dockerfile": "./Dockerfile"
