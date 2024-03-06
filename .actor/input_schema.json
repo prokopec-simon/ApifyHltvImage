@@ -8,7 +8,13 @@
             "type": "string",
             "description": "imgUrl",
             "editor": "textfield"
+        },
+        "urlTrail": {
+            "title": "urlTrail",
+            "type": "string",
+            "description": "urlTrail",
+            "editor": "textfield"
         }
     },
-    "required": ["imgUrl"]
+    "required": ["imgUrl", "urlTrail"]
 }
