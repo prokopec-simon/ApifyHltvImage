@@ -1,20 +1,15 @@
 {
-    "title": "Cheerio Crawler input",
+    "title": "Scrape data from a web page",
     "type": "object",
     "schemaVersion": 1,
     "properties": {
-        "imgUrl": {
-            "title": "imgUrl",
+        "url": {
+            "title": "URL of the page",
             "type": "string",
-            "description": "imgUrl",
-            "editor": "textfield"
-        },
-        "urlTrail": {
-            "title": "urlTrail",
-            "type": "string",
-            "description": "urlTrail",
-            "editor": "textfield"
+            "description": "The URL of website you want to get the data from.",
+            "editor": "textfield",
+            "prefill": "https://www.apify.com/"
         }
     },
-    "required": ["imgUrl", "urlTrail"]
+    "required": ["url"]
 }
