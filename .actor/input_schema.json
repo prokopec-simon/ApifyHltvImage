@@ -3,7 +3,7 @@
     "type": "object",
     "schemaVersion": 1,
     "properties": {
-        "matchId": {
+        "imgId": {
             "title": "imgId",
             "type": "string",
             "description": "imgId",
